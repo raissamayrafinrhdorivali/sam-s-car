@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam'Car - Oficina Mecânica em Vinhedo SP</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for automotive and UI icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        carbon: {
+                            900: '#0b0f13',
+                            800: '#121820',
+                            700: '#1a222c',
+                            600: '#242f3d',
+                        },
+                        autoRed: {
+                            DEFAULT: '#dc2626',
+                            dark: '#b91c1c',
+                            light: '#ef4444',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Rajdhani', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-carbon-900 text-gray-100 font-sans antialiased selection:bg-autoRed selection:text-white">
+
+    <!-- Header Fixo -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-carbon-900/90 backdrop-blur-md border-b border-carbon-700 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-autoRed to-red-800 flex items-center justify-center shadow-lg shadow-autoRed/20 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-gauge-high text-white text-lg"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-display font-bold text-2xl tracking-wider text-white">SAM'<span class="text-autoRed">CAR</span></span>
+                    <span class="text-[10px] uppercase tracking-widest text-gray-400 font-semibold -mt-1">Vinhedo - SP</span>
+                </div>
+            </a>
+
+            <!-- Menu Desktop -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm">
+                <a href="#inicio" class="text-gray-300 hover:text-autoRed transition-colors">Início</a>
+                <a href="#sobre" class="text-gray-300 hover:text-autoRed transition-colors">A Oficina</a>
+                <a href="#servicos" class="text-gray-300 hover:text-autoRed transition-colors">Serviços</a>
+                <a href="#diferenciais" class="text-gray-300 hover:text-autoRed transition-colors">Diferenciais</a>
+                <a href="#orcamento" class="text-gray-300 hover:text-autoRed transition-colors">Simulador</a>
+                <a href="#contato" class="text-gray-300 hover:text-autoRed transition-colors">Contato</a>
+            </nav>
+
+            <!-- Ações CTA Desktop -->
+            <div class="hidden md:flex items-center gap-4">
+                <a href="https://www.instagram.com/samcars.oficina" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-carbon-800 border border-carbon-700 hover:border-autoRed flex items-center justify-center text-gray-300 hover:text-autoRed transition-all" title="Instagram Oficial">
+                    <i class="fa-brands fa-instagram text-lg"></i>
+                </a>
+                <a href="https://wa.me/5519989266924?text=Olá!%20Gostaria%20de%20agendar%20um%20atendimento%20na%20Sam'Car." target="_blank" rel="noopener noreferrer" class="bg-autoRed hover:bg-autoRed-dark text-white font-medium px-5 py-2.5 rounded-xl shadow-lg shadow-autoRed/25 transition-all flex items-center gap-2 text-sm">
+                    <i class="fa-brands fa-whatsapp text-base"></i>
+                    <span>(19) 98926-6924</span>
+                </a>
+            </div>
+
+            <!-- Botão Menu Mobile -->
+            <button id="menu-btn" class="md:hidden text-gray-300 hover:text-white p-2 focus:outline-none">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Menu Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-carbon-800 border-b border-carbon-700 px-4 pt-2 pb-6 space-y-3">
+            <a href="#inicio" class="block py-2 text-gray-300 hover:text-autoRed font-medium border-b border-carbon-700/50 mobile-link">Início</a>
+            <a href="#sobre" class="block py-2 text-gray-300 hover:text-autoRed font-medium border-b border-carbon-700/50 mobile-link">A Oficina</a>
+            <a href="#servicos" class="block py-2 text-gray-300 hover:text-autoRed font-medium border-b border-carbon-700/50 mobile-link">Serviços</a>
+            <a href="#diferenciais" class="block py-2 text-gray-300 hover:text-autoRed font-medium border-b border-carbon-700/50 mobile-link">Diferenciais</a>
+            <a href="#orcamento" class="block py-2 text-gray-300 hover:text-autoRed font-medium border-b border-carbon-700/50 mobile-link">Simulador</a>
+            <a href="#contato" class="block py-2 text-gray-300 hover:text-autoRed font-medium mobile-link">Contato</a>
+            <div class="pt-2 flex items-center gap-3">
+                <a href="https://www.instagram.com/samcars.oficina" target="_blank" rel="noopener noreferrer" class="flex-1 bg-carbon-700 hover:bg-carbon-600 py-2.5 rounded-xl text-center text-sm font-medium flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-instagram text-autoRed"></i> Instagram
+                </a>
+                <a href="https://wa.me/5519989266924?text=Olá!%20Gostaria%20de%20agendar%20um%20atendimento%20na%20Sam'Car." target="_blank" rel="noopener noreferrer" class="flex-1 bg-autoRed hover:bg-autoRed-dark py-2.5 rounded-xl text-center text-sm font-medium flex items-center justify-center gap-2 text-white">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Seção Hero / Apresentação -->
+    <section id="inicio" class="relative min-h-screen flex items-center pt-28 pb-16 overflow-hidden bg-carbon-900">
+        <!-- Elementos decorativos de fundo -->
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#dc2626_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"></div>
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-autoRed/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Coluna de Texto -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-carbon-800 border border-carbon-700 text-xs font-semibold text-autoRed uppercase tracking-wider">
+                        <i class="fa-solid fa-location-dot"></i> Vinhedo - SP
+                    </div>
+                    <h1 class="font-display font-bold text-4xl sm:text-6xl text-white tracking-tight leading-none">
+                        Especialistas em <span class="text-transparent bg-clip-text bg-gradient-to-r from-autoRed to-red-400">Performance</span> e Manutenção
+                    </h1>
+                    <p class="text-lg text-gray-300 font-light max-w-2xl mx-auto lg:mx-0">
+                        "Paixão por carros, compromisso com resultados." Cuidamos do seu veículo com alta tecnologia, diagnóstico preciso e profissionais altamente qualificados.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#orcamento" class="w-full sm:w-auto bg-autoRed hover:bg-autoRed-dark text-white font-semibold px-8 py-4 rounded-xl shadow-xl shadow-autoRed/30 transition-all flex items-center justify-center gap-3 text-base">
+                            <i class="fa-solid fa-calculator"></i>
+                            <span>Simular Orçamento Online</span>
+                        </a>
+                        <a href="https://wa.me/5519989266924?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20um%20mecânico." target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-carbon-800 hover:bg-carbon-700 text-gray-200 border border-carbon-700 font-semibold px-8 py-4 rounded-xl transition-all flex items-center justify-center gap-3 text-base">
+                            <i class="fa-brands fa-whatsapp text-green-500 text-xl"></i>
+                            <span>Chamar no WhatsApp</span>
+                        </a>
+                    </div>
+
+                    <!-- Mini Estatísticas / Confiança -->
+                    <div class="grid grid-cols-3 gap-4 pt-8 border-t border-carbon-700/60 max-w-lg mx-auto lg:mx-0">
+                        <div class="text-center lg:text-left">
+                            <span class="block font-display font-bold text-2xl text-white">+10 Anos</span>
+                            <span class="text-xs text-gray-400">De Experiência</span>
+                        </div>
+                        <div class="text-center lg:text-left">
+                            <span class="block font-display font-bold text-2xl text-autoRed">100%</span>
+                            <span class="text-xs text-gray-400">Garantia e Rigor</span>
+                        </div>
+                        <div class="text-center lg:text-left">
+                            <span class="block font-display font-bold text-2xl text-white">Vinhedo</span>
+                            <span class="text-xs text-gray-400">E Região</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna Visual / Card em Destaque -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md bg-carbon-800 border border-carbon-700 rounded-3xl p-6 shadow-2xl overflow-hidden group">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-autoRed/20 rounded-full blur-2xl"></div>
+                        <div class="flex items-center justify-between pb-6 border-b border-carbon-700">
+                            <div class="flex items-center gap-3">
+                                <div class="w-3 h-3 rounded-full bg-autoRed animate-pulse"></div>
+                                <span class="text-xs font-semibold uppercase tracking-wider text-gray-400">Oficina Ativa</span>
+                            </div>
+                            <span class="text-xs px-2.5 py-1 bg-carbon-700 text-gray-300 rounded-lg">Vinhedo - SP</span>
+                        </div>
+
+                        <div class="py-6 space-y-4">
+                            <div class="bg-carbon-900 p-4 rounded-2xl border border-carbon-700/60 flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-autoRed/15 text-autoRed flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-gears"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-white text-sm">Tecnología de Ponta</h4>
+                                    <p class="text-xs text-gray-400">Injeção programável e Scanner avançado</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-carbon-900 p-4 rounded-2xl border border-carbon-700/60 flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-autoRed/15 text-autoRed flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-shield-halved"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-white text-sm">Segurança em Primeiro</h4>
+                                    <p class="text-xs text-gray-400">Revisão completa em freios e suspensão</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-2">
+                            <a href="https://www.instagram.com/samcars.oficina" target="_blank" rel="noopener noreferrer" class="w-full bg-gradient-to-r from-purple-900/40 via-autoRed/30 to-pink-900/40 hover:from-purple-900/60 hover:to-autoRed/50 border border-carbon-700 py-3.5 px-4 rounded-2xl flex items-center justify-center gap-3 text-sm font-semibold transition-all">
+                                <i class="fa-brands fa-instagram text-pink-400 text-lg"></i>
+                                <span>Siga @samcars.oficina no Instagram</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Sobre / A Oficina -->
+    <section id="sobre" class="py-20 bg-carbon-800 border-t border-carbon-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-carbon-900 border border-carbon-700 text-xs font-semibold text-autoRed uppercase tracking-wider">
+                        Quem Somos
+                    </div>
+                    <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">
+                        Referência em Manutenção Automotiva e Preparação em Vinhedo
+                    </h2>
+                    <p class="text-gray-300 leading-relaxed font-light">
+                        Na <strong class="text-white font-semibold">Sam'Car</strong>, entendemos que o seu carro é mais do que um meio de transporte: é paixão, liberdade e necessidade diária. Por isso, unimos equipamentos de diagnóstico de última geração com o rigor técnico de profissionais apaixonados por motores.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed font-light">
+                        Seja para manutenções preventivas, corretivas ou acertos finos em injeções programáveis, entregamos transparência, agilidade e excelência em cada parafuso apertado.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 pt-2">
+                        <div class="bg-carbon-900 p-4 rounded-xl border border-carbon-700">
+                            <span class="block font-display font-bold text-xl text-autoRed mb-1">Diagnóstico Preciso</span>
+                            <span class="text-xs text-gray-400">Identificação rápida de falhas sem trocas desnecessárias de peças.</span>
+                        </div>
+                        <div class="bg-carbon-900 p-4 rounded-xl border border-carbon-700">
+                            <span class="block font-display font-bold text-xl text-autoRed mb-1">Peças de Confiança</span>
+                            <span class="text-xs text-gray-400">Trabalhamos apenas com componentes e lubrificantes de primeira linha.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="bg-carbon-900 border border-carbon-700 rounded-3xl p-8 space-y-6 shadow-xl relative overflow-hidden">
+                        <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-autoRed/10 rounded-full blur-3xl"></div>
+                        <h3 class="font-display font-bold text-2xl text-white border-b border-carbon-700 pb-4">
+                            Nossa Filosofia
+                        </h3>
+                        <blockquote class="italic text-gray-300 text-base">
+                            "Paixão por carros, compromisso com resultados."
+                        </blockquote>
+                        <p class="text-sm text-gray-400">
+                            Esse lema guia cada atendimento realizado em nossa oficina em Vinhedo - SP. Buscamos superar as expectativas dos clientes mais exigentes, garantindo segurança e desempenho máximo para a sua máquina.
+                        </p>
+                        <div class="pt-4 flex items-center justify-between border-t border-carbon-700 text-xs text-gray-400">
+                            <span><i class="fa-solid fa-map-pin text-autoRed mr-1.5"></i> Vinhedo, SP</span>
+                            <span><i class="fa-solid fa-phone text-autoRed mr-1.5"></i> (19) 98926-6924</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Serviços Detalhados -->
+    <section id="servicos" class="py-24 bg-carbon-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-carbon-800 border border-carbon-700 text-xs font-semibold text-autoRed uppercase tracking-wider">
+                    Especialidades
+                </div>
+                <h2 class="font-display font-bold text-3xl sm:text-5xl text-white">
+                    Serviços Automotivos Completos
+                </h2>
+                <p class="text-gray-400 text-sm sm:text-base font-light">
+                    Soluções mecânicas especializadas para garantir a durabilidade, estabilidade e potência do seu veículo.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Serviço 1: Mecânica Geral -->
+                <div class="bg-carbon-800 border border-carbon-700 rounded-2xl p-6 hover:border-autoRed/60 transition-all group flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-autoRed/15 text-autoRed flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-wrench"></i>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-white mb-3">Mecânica Geral</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6 font-light">
+                            Manutenção preventiva e corretiva de motores, correias, trocas de óleo, filtros, revisões completas e solução de falhas mecânicas.
+                        </p>
+                    </div>
+                    <a href="#orcamento" onclick="selecionarServico('Mecânica Geral')" class="inline-flex items-center gap-2 text-xs font-semibold text-autoRed hover:text-red-400 uppercase tracking-wider">
+                        <span>Solicitar Orçamento</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Serviço 2: Suspensão -->
+                <div class="bg-carbon-800 border border-carbon-700 rounded-2xl p-6 hover:border-autoRed/60 transition-all group flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-autoRed/15 text-autoRed flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-car-burst"></i>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-white mb-3">Suspensão</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6 font-light">
+                            Amortecedores, molas, buchas, pivôs, batentes e geometria. Garanta estabilidade, conforto e segurança nas curvas e estradas.
+                        </p>
+                    </div>
+                    <a href="#orcamento" onclick="selecionarServico('Suspensão')" class="inline-flex items-center gap-2 text-xs font-semibold text-autoRed hover:text-red-400 uppercase tracking-wider">
+                        <span>Solicitar Orçamento</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Serviço 3: Freios -->
+                <div class="bg-carbon-800 border border-carbon-700 rounded-2xl p-6 hover:border-autoRed/60 transition-all group flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-autoRed/15 text-autoRed flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-white mb-3">Freios</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6 font-light">
+                            Pastilhas, discos, fluidos, cilindros e revisão completa do sistema de frenagem para máxima segurança e resposta imediata.
+                        </p>
+                    </div>
+                    <a href="#orcamento" onclick="selecionarServico('Freios')" class="inline-flex items-center gap-2 text-xs font-semibold text-autoRed hover:text-red-400 uppercase tracking-wider">
+                        <span>Solicitar Orçamento</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Serviço 4: Injeção Programável -->
+                <div class="bg-carbon-800 border border-carbon-700 rounded-2xl p-6 hover:border-autoRed/60 transition-all group flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-autoRed/15 text-autoRed flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-white mb-3">Injeção Programável</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6 font-light">
+                            Instalação e acerto técnico avançado de módulos programáveis (FuelTech, Injepro, etc.) para máxima eficiência, torque e performance.
+                        </p>
+                    </div>
+                    <a href="#orcamento" onclick="selecionarServico('Injeção Programável')" class="inline-flex items-center gap-2 text-xs font-semibold text-autoRed hover:text-red-400 uppercase tracking-wider">
+                        <span>Solicitar Orçamento</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Diferenciais -->
+    <section id="diferenciais" class="py-20 bg-carbon-800 border-t border-b border-carbon-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-carbon-900 border border-carbon-700 text-xs font-semibold text-autoRed uppercase tracking-wider">
+                    Por que nos escolher?
+                </div>
+                <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">
+                    Diferenciais Sam'Car
+                </h2>
+                <p class="text-gray-400 text-sm font-light">
+                    Compromisso absoluto com a qualidade e respeito ao cliente.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-carbon-900 border border-carbon-700 rounded-2xl p-8 space-y-4 text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-autoRed/15 text-autoRed mx-auto flex items-center justify-center text-2xl">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-white">Transparência Total</h3>
+                    <p class="text-gray-400 text-sm font-light">
+                        Orçamento detalhado antes de qualquer execução. Enviamos fotos e vídeos das peças que necessitam de troca.
+                    </p>
+                </div>
+
+                <div class="bg-carbon-900 border border-carbon-700 rounded-2xl p-8 space-y-4 text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-autoRed/15 text-autoRed mx-auto flex items-center justify-center text-2xl">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-white">Agilidade no Atendimento</h3>
+                    <p class="text-gray-400 text-sm font-light">
+                        Respeitamos o seu tempo com prazos claros de entrega e atendimento via WhatsApp rápido em Vinhedo e região.
+                    </p>
+                </div>
+
+                <div class="bg-carbon-900 border border-carbon-700 rounded-2xl p-8 space-y-4 text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-autoRed/15 text-autoRed mx-auto flex items-center justify-center text-2xl">
+                        <i class="fa-solid fa-medal"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-white">Garantia nos Serviços</h3>
+                    <p class="text-gray-400 text-sm font-light">
+                        Trabalho executado com rigor técnico, peças de primeira e garantia em mão de obra para sua total tranquilidade.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simulador de Orçamento Interativo -->
+    <section id="orcamento" class="py-24 bg-carbon-900 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-carbon-800 border border-carbon-700 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-autoRed/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="text-center max-w-xl mx-auto mb-10 space-y-3">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-carbon-900 border border-carbon-700 text-xs font-semibold text-autoRed uppercase tracking-wider">
+                        Orçamento Rápido
+                    </div>
+                    <h2 class="font-display font-bold text-3xl text-white">Simulador de Orçamento</h2>
+                    <p class="text-gray-400 text-sm font-light">
+                        Preencha os dados abaixo. Nosso sistema montará uma mensagem pronta para você enviar diretamente para o WhatsApp da <strong class="text-white">Sam'Car</strong>.
+                    </p>
+                </div>
+
+                <form id="quote-form" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Seu Nome *</label>
+                            <input type="text" id="client-name" required class="w-full bg-carbon-900 border border-carbon-700 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-autoRed transition-colors" placeholder="Ex: Carlos Silva">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Seu Telefone / WhatsApp *</label>
+                            <input type="tel" id="client-phone" required class="w-full bg-carbon-900 border border-carbon-700 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-autoRed transition-colors" placeholder="Ex: (19) 99999-9999">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Modelo do Veículo *</label>
+                            <input type="text" id="car-model" required class="w-full bg-carbon-900 border border-carbon-700 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-autoRed transition-colors" placeholder="Ex: VW Golf GTI / Honda Civic">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Serviço Desejado *</label>
+                            <select id="service-select" class="w-full bg-carbon-900 border border-carbon-700 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-autoRed transition-colors">
+                                <option value="Mecânica Geral">Mecânica Geral</option>
+                                <option value="Suspensão">Suspensão</option>
+                                <option value="Freios">Freios</option>
+                                <option value="Injeção Programável">Instalação e acerto de Injeção Programável</option>
+                                <option value="Outro Serviço">Outro Serviço / Revisão Geral</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Detalhes / Descrição do Problema</label>
+                        <textarea id="car-details" rows="4" class="w-full bg-carbon-900 border border-carbon-700 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-autoRed transition-colors" placeholder="Conte mais sobre o que seu carro precisa..."></textarea>
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="button" onclick="enviarOrcamentoWhatsApp()" class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-6 rounded-xl shadow-lg shadow-green-600/20 transition-all flex items-center justify-center gap-3 text-base">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            <span>Enviar Solicitação para o WhatsApp da Oficina</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Contato e Localização -->
+    <section id="contato" class="py-20 bg-carbon-800 border-t border-carbon-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-carbon-900 border border-carbon-700 text-xs font-semibold text-autoRed uppercase tracking-wider">
+                        Fale Conosco
+                    </div>
+                    <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">
+                        Venha nos visitar em Vinhedo - SP
+                    </h2>
+                    <p class="text-gray-300 font-light text-sm sm:text-base">
+                        Estamos prontos para atender você e cuidar do seu veículo com dedicação máxima. Entre em contato por telefone, WhatsApp ou faça-nos uma visita.
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start gap-4 bg-carbon-900 p-4 rounded-xl border border-carbon-700">
+                            <div class="w-10 h-10 rounded-lg bg-autoRed/15 text-autoRed flex items-center justify-center text-lg flex-shrink-0 mt-0.5">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white text-sm">Localização</h4>
+                                <p class="text-xs text-gray-400 mt-0.5">Vinhedo - SP (Atendimento com excelência na região)</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 bg-carbon-900 p-4 rounded-xl border border-carbon-700">
+                            <div class="w-10 h-10 rounded-lg bg-autoRed/15 text-autoRed flex items-center justify-center text-lg flex-shrink-0 mt-0.5">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white text-sm">Telefone / WhatsApp</h4>
+                                <a href="https://wa.me/5519989266924" target="_blank" rel="noopener noreferrer" class="text-xs text-autoRed hover:underline font-medium mt-0.5 block">(19) 98926-6924</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 bg-carbon-900 p-4 rounded-xl border border-carbon-700">
+                            <div class="w-10 h-10 rounded-lg bg-autoRed/15 text-autoRed flex items-center justify-center text-lg flex-shrink-0 mt-0.5">
+                                <i class="fa-brands fa-instagram"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white text-sm">Instagram Oficial</h4>
+                                <a href="https://www.instagram.com/samcars.oficina" target="_blank" rel="noopener noreferrer" class="text-xs text-autoRed hover:underline font-medium mt-0.5 block">@samcars.oficina</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-carbon-900 border border-carbon-700 rounded-3xl p-8 space-y-6">
+                    <h3 class="font-display font-bold text-2xl text-white">Horário de Funcionamento</h3>
+                    <ul class="space-y-4 text-sm text-gray-300 divide-y divide-carbon-700/60">
+                        <li class="flex justify-between pt-2">
+                            <span class="text-gray-400">Segunda à Sexta-feira</span>
+                            <span class="font-semibold text-white">08:00 - 18:00</span>
+                        </li>
+                        <li class="flex justify-between pt-4">
+                            <span class="text-gray-400">Sábado</span>
+                            <span class="font-semibold text-white">08:00 - 12:00</span>
+                        </li>
+                        <li class="flex justify-between pt-4">
+                            <span class="text-gray-400">Domingo / Feriados</span>
+                            <span class="font-semibold text-autoRed">Fechado</span>
+                        </li>
+                    </ul>
+
+                    <div class="pt-4">
+                        <a href="https://wa.me/5519989266924?text=Olá!%20Gostaria%20de%20tirar%20uma%20dúvida%20sobre%20horário." target="_blank" rel="noopener noreferrer" class="w-full bg-autoRed hover:bg-autoRed-dark text-white font-semibold py-3.5 px-4 rounded-xl transition-all flex items-center justify-center gap-2 text-sm shadow-lg shadow-autoRed/20">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span>Consultar Disponibilidade</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botão Flutuante do WhatsApp -->
+    <a href="https://wa.me/5519989266924?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-50 bg-green-600 hover:bg-green-500 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-3xl transition-transform hover:scale-110 focus:outline-none" title="Fale conosco no WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Rodapé Completo -->
+    <footer class="bg-carbon-900 border-t border-carbon-700 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-carbon-800">
+                
+                <div class="space-y-4 md:col-span-2">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-autoRed to-red-800 flex items-center justify-center text-white">
+                            <i class="fa-solid fa-gauge-high"></i>
+                        </div>
+                        <span class="font-display font-bold text-2xl text-white">SAM'<span class="text-autoRed">CAR</span></span>
+                    </div>
+                    <p class="text-gray-400 text-sm font-light max-w-sm">
+                        "Paixão por carros, compromisso com resultados." Oficina mecânica especializada em Vinhedo - SP.
+                    </p>
+                    <div class="flex items-center gap-3 pt-2">
+                        <a href="https://www.instagram.com/samcars.oficina" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-carbon-800 border border-carbon-700 hover:border-autoRed flex items-center justify-center text-gray-300 hover:text-autoRed transition-all">
+                            <i class="fa-brands fa-instagram text-lg"></i>
+                        </a>
+                        <a href="https://wa.me/5519989266924" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-carbon-800 border border-carbon-700 hover:border-green-500 flex items-center justify-center text-gray-300 hover:text-green-500 transition-all">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-display font-bold text-white text-base mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2 text-sm text-gray-400 font-light">
+                        <li><a href="#inicio" class="hover:text-autoRed transition-colors">Início</a></li>
+                        <li><a href="#sobre" class="hover:text-autoRed transition-colors">A Oficina</a></li>
+                        <li><a href="#servicos" class="hover:text-autoRed transition-colors">Serviços</a></li>
+                        <li><a href="#orcamento" class="hover:text-autoRed transition-colors">Simular Orçamento</a></li>
+                        <li><a href="#contato" class="hover:text-autoRed transition-colors">Contato</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-display font-bold text-white text-base mb-4">Rede Social</h4>
+                    <ul class="space-y-2 text-sm text-gray-400 font-light">
+                        <li>
+                            <a href="https://www.instagram.com/samcars.oficina" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-autoRed transition-colors">
+                                <i class="fa-brands fa-instagram text-autoRed"></i> @samcars.oficina
+                            </a>
+                        </li>
+                        <li class="pt-2">
+                            <span class="block text-xs text-gray-500">Acompanhe nossos projetos, bastidores da oficina e dicas automotivas diárias no Instagram.</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500">
+                <p>&copy; 2026 Sam'Car Oficina Mecânica - Vinhedo / SP. Todos os direitos reservados.</p>
+                <p class="mt-2 sm:mt-0">Desenvolvido com foco em alta performance e qualidade.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts JavaScript -->
+    <script>
+        // Menu Mobile Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Função para selecionar serviço direto dos cards para o simulador
+        function selecionarServico(nomeServico) {
+            const select = document.getElementById('service-select');
+            for (let i = 0; i < select.options.length; i++) {
+                if (select.options[i].value === nomeServico) {
+                    select.selectedIndex = i;
+                    break;
+                }
+            }
+        }
+
+        // Simulador de Orçamento - Envio para WhatsApp
+        function enviarOrcamentoWhatsApp() {
+            const nome = document.getElementById('client-name').value.trim();
+            const telefone = document.getElementById('client-phone').value.trim();
+            const carro = document.getElementById('car-model').value.trim();
+            const servico = document.getElementById('service-select').value;
+            const detalhes = document.getElementById('car-details').value.trim();
+
+            if (!nome || !telefone || !carro) {
+                // Mensagem customizada em vez de alert()
+                alertPersonalizado("Por favor, preencha seu nome, telefone e o modelo do veículo.");
+                return;
+            }
+
+            const mensagem = `Olá, meu nome é *${nome}* (Tel: ${telefone}). Estou interessado em um orçamento na Sam'Car.\n\n🚗 *Veículo:* ${carro}\n🛠️ *Serviço:* ${servico}\n📝 *Detalhes:* ${detalhes || 'Nenhum detalhe adicional informado.'}`;
+
+            const urlWhatsApp = `https://wa.me/5519989266924?text=${encodeURIComponent(mensagem)}`;
+            window.open(urlWhatsApp, '_blank');
+        }
+
+        // Fallback customizado de aviso sem alert() nativo
+        function alertPersonalizado(texto) {
+            const avisoDiv = document.createElement('div');
+            avisoDiv.className = 'fixed top-24 left-1/2 transform -translate-x-1/2 z-50 bg-autoRed text-white px-6 py-3 rounded-2xl shadow-2xl text-sm font-medium animate-bounce';
+            avisoDiv.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-2"></i> ${texto}`;
+            document.body.appendChild(avisoDiv);
+            setTimeout(() => {
+                avisoDiv.remove();
+            }, 3500);
+        }
+    </script>
+</body>
+</html>
